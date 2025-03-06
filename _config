@@ -1,0 +1,6 @@
+title: Awake Christian Gospel Ministry
+description: A Faith-Based Blog & Digital Magazine
+theme: minima  # You can use another theme or custom styling
+markdown: kramdown
+paginate: 5
+permalink: /:categories/:title/
