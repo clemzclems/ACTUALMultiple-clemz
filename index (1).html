@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Pagination</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        .content-box {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        iframe {
+            width: 100%; /* Full width inside content-box */
+            height: 350px; /* Adjust height as needed */
+            border: none;
+            border-radius: 10px;
+        }
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .pagination button:hover {
+            background: #0056b3;
+        }
+        .pagination .active {
+            background: #ff5722;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="color: #007bff;">Magazine & Blog Section</h1>
+
+    <div class="content-box" id="content">
+        <!-- Content will load dynamically here -->
+    </div>
+
+    <div class="pagination" id="pagination">
+        <!-- Buttons will be generated here -->
+    </div>
+
+    <script>
+        const pages = [
+            "<h2>Our Upcoming Program</h2><p>Join us for an exciting worship service this Sunday!</p><img src='https://via.placeholder.com/400' alt='Program Image'>",
+            "<h2>Gallery</h2><p>Check out our latest church events and activities!</p><img src='https://via.placeholder.com/400' alt='Gallery Image'>",
+            "<h2>Service</h2><p>Our weekly service schedule is as follows...</p><img src='https://via.placeholder.com/400' alt='Service Image'>",
+            `<h2>Sermon</h2><p>Listen to inspiring messages from our pastor.</p>
+             <iframe src="https://www.youtube.com/embed/9UVm5mu8rfY" allowfullscreen></iframe>`,
+            `<h2>Donation</h2><p>Support our ministry by donating.</p>
+             <a href="https://paypal.me/clemzclems?country.x=AE&locale.x=en_US" target="_blank" style="color: #ff5722; font-size: 18px;">Donate via PayPal</a>`
+ 
+        ];
+
+        function loadPage(pageIndex) {
+            document.getElementById('content').innerHTML = pages[pageIndex];
+            let buttons = document.querySelectorAll('.pagination button');
+            buttons.forEach((btn, i) => {
+                btn.classList.toggle('active', i === pageIndex);
+            });
+        }
+
+        function setupPagination() {
+            let paginationDiv = document.getElementById('pagination');
+            for (let i = 0; i < pages.length; i++) {
+                let btn = document.createElement("button");
+                btn.innerText = i + 1;
+                btn.onclick = () => loadPage(i);
+                paginationDiv.appendChild(btn);
+            }
+            loadPage(0); // Load first page initially
+        }
+
+        setupPagination();
+    </script>
+
+</body>
+</html>
