@@ -1,0 +1,14 @@
+---
+layout: default
+title: "Digital Magazine"
+---
+<h2>Featured Magazine Articles</h2>
+<ul>
+    {% for article in site.pages %}
+    {% if article.layout == "magazine" %}
+    <li>
+        <a href="{{ article.url }}">{{ article.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
